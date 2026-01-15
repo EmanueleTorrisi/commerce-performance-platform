@@ -1,6 +1,8 @@
 # --- DATA & STORAGE ---
+!data/
+!data/*/
 !data/**/.gitkeep
-data/
+data/**/*
 # Individual file types as a safety net
 *.csv
 *.xlsx
