@@ -15,11 +15,11 @@ def run_pipeline():
 
     - Proper handling of Excel serial dates.
     - Explicit dtype specifications during loading to minimize memory usage.
-    - Enhanced error handling with try-except blocks to prevent crashes and provide informative logs.
+    - Error handling with try-except blocks to prevent crashes and provide informative logs.
     - Data validation steps to check for inconsistencies (e.g., duplicates, missing keys).
     - Modular functions for better maintainability and reusability.
-    - Preservation of all columns for comprehensive analysis, but with options for selective export if needed.
-    - Export to both CSV (for accessibility) and Parquet (for efficiency).
+    - Preservation of all columns for comprehensive analysis.
+    - Export to both CSV and Parquet.
 
     """
 
@@ -50,7 +50,7 @@ def run_pipeline():
     }
 
     try:
-        # try to let pandas parse dates normally (more robust with mixed formats)
+        # try to let pandas parse dates normally
         orders = pd.read_excel(raw_path, sheet_name='Orders', dtype=orders_dtypes, parse_dates=['Order Date', 'Ship Date'])
         returns = pd.read_excel(raw_path, sheet_name='Returns')
         people = pd.read_excel(raw_path, sheet_name='People')
@@ -129,7 +129,7 @@ def run_pipeline():
     df_merged.loc[~df_merged['returned'].isin(['Yes','No']), 'returned'] = 'No'
     df_merged['returned'] = df_merged['returned'].astype('category')
 
-    # Canada regional split - keep your logic but guard for missing columns
+    # Canada regional split
     canada_mask = (df_merged['country'] == 'Canada') if 'country' in df_merged.columns else pd.Series([False]*len(df_merged))
     eastern_states = ['Ontario', 'Quebec', 'Nova Scotia', 'New Brunswick', 'Prince Edward Island', 'Newfoundland and Labrador']
     if 'state' in df_merged.columns:
