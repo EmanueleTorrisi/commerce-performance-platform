@@ -32,7 +32,6 @@ build/
 
 # --- POWER BI & TOOLS ---
 # Ignore large binary dashboard files and temp layouts
-*.pbit
 *.pbi
 *.layout
 *.ms-admp
