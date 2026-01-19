@@ -17,7 +17,7 @@ The SQL queries used to inspect and clean the data for this analysis can be foun
 
 Targeted SQL queries regarding various business questions can be found here ![link](sql/03_business_analysis.sql).
 
-An interactive Power BI dashboard used to report and explore sales trends can be found here ![link](powerbi/commerce-dashboard.pbit).
+An interactive Power BI dashboard used to report and explore sales trends can be found here ![link](powerbi/Commerce_Dashboard.pbit).
 
 
 
